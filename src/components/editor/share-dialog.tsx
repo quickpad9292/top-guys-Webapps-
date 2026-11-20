@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import { Check, Copy, Globe, Loader2, Lock, Trash2, UserPlus } from "lucide-react";
 import { toast } from "sonner";
 import { createClient } from "@/lib/supabase/client";
@@ -24,6 +25,7 @@ export function ShareDialog({
   onChange: (patch: Partial<Note>) => void;
 }) {
   const supabase = createClient();
+  const router = useRouter();
   const [collabs, setCollabs] = useState<Collaborator[]>([]);
   const [email, setEmail] = useState("");
   const [role, setRole] = useState<"editor" | "viewer">("editor");
@@ -82,7 +84,8 @@ export function ShareDialog({
     if (error) return void toast.error(error.message);
     if (userId === currentUserId) {
       toast.success("You left this note");
-      window.location.href = "/notes";
+      router.replace("/notes");
+      router.refresh();
       return;
     }
     setCollabs((c) => c.filter((x) => x.user_id !== userId));
