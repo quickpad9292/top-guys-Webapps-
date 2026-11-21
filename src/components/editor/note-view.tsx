@@ -184,7 +184,7 @@ export function NoteView({ id }: { id: string }) {
 
   return (
     <div className="flex h-full flex-col">
-      <header className="no-print sticky top-0 z-30 flex items-center gap-1.5 border-b border-line bg-bg/70 px-3 py-2 backdrop-blur-xl sm:px-5">
+      <header className="no-print sticky top-0 z-30 flex min-w-0 items-center gap-0.5 border-b border-line bg-bg/70 px-3 py-2 backdrop-blur-xl sm:px-5">
         <button onClick={() => router.push("/notes")} className={cn(iconBtn, "md:hidden")} aria-label="Back">
           <ArrowLeft className="h-5 w-5" />
         </button>
@@ -197,7 +197,7 @@ export function NoteView({ id }: { id: string }) {
             className="flex h-9 items-center gap-1.5 rounded-xl px-2.5 text-sm text-muted transition enabled:hover:bg-fg/[0.06] enabled:hover:text-fg"
           >
             <FolderIcon className={cn("h-4 w-4", folder && paletteOf(folder.color).soft.split(" ").slice(1).join(" "))} />
-            <span className="max-w-[9rem] truncate">{folder?.name ?? (isOwner ? "No folder" : "Shared note")}</span>
+            <span className="hidden max-w-[9rem] truncate sm:inline">{folder?.name ?? (isOwner ? "No folder" : "Shared note")}</span>
           </button>
           <Popover open={menu === "folder"} onClose={() => setMenu(null)} className="left-0 right-auto w-56">
             <MenuItem icon={FolderIcon} onClick={() => { updateNote(id, { folder_id: null }); setMenu(null); }}>No folder</MenuItem>
@@ -210,7 +210,7 @@ export function NoteView({ id }: { id: string }) {
           </Popover>
         </div>
 
-        <div className="ml-auto flex items-center gap-1">
+        <div className="ml-auto flex min-w-0 items-center gap-0.5 sm:gap-1">
           {/* Save + live status */}
           <span className="mr-1 hidden items-center gap-1.5 text-xs text-muted sm:flex">
             {!canEdit ? (

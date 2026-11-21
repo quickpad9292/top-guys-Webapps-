@@ -173,10 +173,25 @@ body {
 .tiptap ul[data-type="taskList"] li > div {
   flex: 1;
 }
+/* Images always fit the screen: never wider than the text column, never taller than
+   ~70% of the viewport (portrait phone photos), centered, aspect ratio preserved. */
 .tiptap img {
-  border-radius: 1rem;
+  display: block;
+  width: auto;
+  height: auto;
   max-width: 100%;
+  max-height: 70vh;
+  max-height: 70svh;
+  margin-inline: auto;
+  object-fit: contain;
+  border-radius: 1rem;
   border: 1px solid var(--border);
+}
+@media (max-width: 640px) {
+  .tiptap img {
+    border-radius: 0.75rem;
+    max-height: 60svh;
+  }
 }
 .tiptap img.ProseMirror-selectednode {
   outline: 3px solid var(--ring);
@@ -212,6 +227,10 @@ body {
   }
   .no-print {
     display: none !important;
+  }
+  .tiptap img {
+    max-height: none !important;
+    break-inside: avoid;
   }
   .print-area {
     position: static !important;
