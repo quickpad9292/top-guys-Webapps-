@@ -8,7 +8,7 @@ Bold, fast note-taking built with **Next.js 16**, **Supabase** and **Tiptap**.
 - **Folders & colour tags**, pinning, archive, instant full-text search, autosave
 - **Real-time co-editing** (Yjs over private Supabase Realtime channels) with live presence
 - **Sharing**: invite people by email as *editor* or *viewer*, or publish a revocable read-only link (`/s/<token>`)
-- **AI** (Claude): summarize, rewrite, auto-tag, and "ask your notes". Off until `ANTHROPIC_API_KEY` is set
+- **AI** (OpenRouter or Claude): summarize, rewrite, auto-tag, and "ask your notes". Off until `OPENROUTER_API_KEY` (or `ANTHROPIC_API_KEY`) is set
 - **⌘K command palette** and keyboard shortcuts
 - **Image uploads** (paste / drag / `/image`) to Supabase Storage
 - **Export** to Markdown or PDF (print)
@@ -40,7 +40,9 @@ Environment variables:
 | --- | --- | --- |
 | `NEXT_PUBLIC_SUPABASE_URL` | Vercel + `.env.local` | already set in Vercel |
 | `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` | Vercel + `.env.local` | already set in Vercel |
-| `ANTHROPIC_API_KEY` | Vercel only (secret) | optional, enables AI |
+| `OPENROUTER_API_KEY` | Vercel only (secret) | optional, enables AI through OpenRouter (takes priority) |
+| `OPENROUTER_MODEL` | Vercel | optional model id from openrouter.ai/models; default `openrouter/auto` |
+| `ANTHROPIC_API_KEY` | Vercel only (secret) | optional, enables AI through Claude directly |
 
 ### Supabase
 

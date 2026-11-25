@@ -107,7 +107,7 @@ export function AiPanel({
           <KeyRound className="mb-3 h-6 w-6 text-accent" />
           <p className="font-semibold">AI isn&apos;t switched on yet</p>
           <p className="mt-1.5 text-muted">
-            Add an <code className="rounded bg-fg/[0.07] px-1">ANTHROPIC_API_KEY</code> environment variable in Vercel → Project → Settings →
+            Add an <code className="rounded bg-fg/[0.07] px-1">OPENROUTER_API_KEY</code> environment variable in Vercel → Project → Settings →
             Environment Variables, then redeploy. All AI features light up automatically.
           </p>
         </div>
